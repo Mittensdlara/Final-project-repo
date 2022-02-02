@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="src/Styling-weather.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@1&family=Source+Code+Pro:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <br />
+    <br />
+    <div class="container">
+      <div class="shape">
+        <h1><strong>Weather</strong></h1>
+        <hr />
+        <h2>
+          <span class="deg">18</span>
+          <span class="units"><a href="#" id="celsius-link">°C</a> </span>
+          <br />
+          <br />
+          <span id="temp">Tokyo</span>
+        </h2>
+        <br />
+        <div>Humidity: <span id="humidity"></span></div>
+        <div>Wind: <span id="wind"></span></div>
+        <div id="description"></div>
+        <hr />
+        <p id="time"></p>
+        <form id="searching">
+          <input
+            type="search"
+            id="city"
+            placeholder="Search for a city..."
+            autocomplete="off"
+            autofocus="on"
+          />
+
+          <input type="submit" value="Go" id="submiting" />
+          <br />
+        </form>
+        <br />
+        <div class="row">
+          <div class="col-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Tomorrow</h5>
+                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                <p class="card-text">12&deg;</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Monday</h5>
+                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                <p class="card-text">19&deg;</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Tuesday</h5>
+                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                <p class="card-text">20&deg;</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Wednesday</h5>
+                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                <p class="card-text">20&deg;</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <a
+          href="http://github.com/Mittensdlara/Final-project-repo"
+          target="_blank"
+        >
+          Open-source code
+        </a>
+        , by Del Ara
+      </footer>
+    </div>
+    <script src="src/Weather.js.js"></script>
+  </body>
+</html>
