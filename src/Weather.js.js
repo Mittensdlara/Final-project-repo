@@ -1,41 +1,74 @@
-function currentTiming() {
-  let p = document.querySelector("#time");
-  p.innerHTML = currentTime;
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
 }
-let currentTime = new Date();
-currentTime.getHours();
-currentTime.getDay();
-currentTiming();
 
-function showTemperature(response) {
-  let tempElem = document.querySelector(".deg");
-  let cityElem = document.querySelector("#temp");
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  let temperature = Math.round(response.data.main.temp);
-  let city = response.data.name;
+  return days[day];
+}
 
-  tempElem.innerHTML = temperature;
-  cityElem.innerHTML = city;
-  document.querySelector("#humidity").innerHTML =
-    response.data.main.humidity + "%";
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
+function displayTemperature(response) {
+  let tempElem = document.querySelector("#temperature");
+  let cityElem = document.querySelector("#city");
+  let descElem = document.querySelector("#description");
+  let humidityElem = document.querySelector("#humidity");
+  let windElem = document.querySelector("#wind");
+  let dateElem = document.querySelector("#date");
+  let iconElem = document.querySelector("#icon");
+
+  celsiusTemperature = response.data.main.temp;
+
+  tempElem.innerHTML = Math.round(celsiusTemperature);
+  cityElem.innerHTML = response.data.name;
+  descElem.innerHTML = response.data.weather[0].description;
+  humidityElem.innerHTML = response.data.main.humidity;
+  windElem.innerHTML = Math.round(response.data.wind.speed);
+  dateElem.innerHTML = formatDate(response.data.dt * 1000);
+  iconElem.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
-function search(event) {
-  event.preventDefault();
-  let city = document.querySelector("#city").value;
-  searchCity(city);
-}
-
-function searchCity(city) {
+function search(city) {
   let apiKey = "27fb8b42ddeb36f74700ba6a216b9ced";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showTemperature);
+  axios.get(apiUrl).then(displayTemperature);
 }
 
-let go = document.querySelector("form");
-go.addEventListener("submit", search);
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+let form = document.querySelector("#searching");
+form.addEventListener("submit", handleSubmit);
+
+search("Tehran");

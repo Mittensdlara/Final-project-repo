@@ -27,30 +27,34 @@
     <div class="container">
       <div class="shape">
         <h1><strong>Weather</strong></h1>
+        <p3></p3>
         <hr />
+
         <h2>
-          <span class="deg">18</span>
-          <span class="units"><a href="#" id="celsius-link">°C</a> </span>
-          <br />
-          <br />
-          <span id="temp">Tokyo</span>
+          <div id="city"></div>
+          <p id="date"></p>
+          <span id="temperature"></span>
+          <span id="units"><a href="#" id="celsius-link">°C</a> </span>
+
+          <img src="" alt="" id="icon" class="float-left" />
+          <div id="description"></div>
         </h2>
-        <br />
-        <div>Humidity: <span id="humidity"></span></div>
-        <div>Wind: <span id="wind"></span></div>
-        <div id="description"></div>
+
+        <div>💧 Humidity: <span id="humidity"></span></div>
+        <div>💨 Wind: <span id="wind"></span></div>
+
         <hr />
-        <p id="time"></p>
+
         <form id="searching">
           <input
             type="search"
-            id="city"
+            id="city-input"
             placeholder="Search for a city..."
             autocomplete="off"
             autofocus="on"
           />
 
-          <input type="submit" value="Go" id="submiting" />
+          <input type="submit" value="Search" class="btn btn-primary" />
           <br />
         </form>
         <br />

@@ -21,7 +21,7 @@ h1 {
 
   font-family: "Roboto Mono", monospace;
   font-family: "Source Code Pro", monospace;
-  color: #708098;
+  color: #4e6a94;
 }
 h2 {
   padding: 25px;
@@ -29,8 +29,14 @@ h2 {
   font-family: "Source Code Pro", monospace;
   font-size: 20px;
 }
+p3 {
+  text-align: center;
+  display: block;
+  font-size: 22px;
+}
 #city {
-  padding: 0 20px;
+  padding: 0 auto;
+  font-size: 40px;
 }
 #submiting {
   padding: 0 20px;
@@ -55,23 +61,27 @@ h2 {
   text-decoration: underline;
   font-size: 18px;
 }
-.deg {
-  font-size: 37px;
+#temperature {
+  font-size: 50px;
 }
 
-.units {
+#units {
   font-size: 15px;
 }
 #humidity {
-  display: block;
+  display: inline;
   font-weight: bold;
 }
 #wind {
-  display: block;
+  display: inline;
   font-weight: bold;
 }
 
 #description {
   display: block;
   font-weight: bold;
+  font-size: 20px;
+}
+#date {
+  font-size: 20px;
 }
